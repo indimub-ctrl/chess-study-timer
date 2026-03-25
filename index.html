@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Grandmaster Timer</title>
+    <style>
+        body {
+            background: #1a1a1a;
+            color: white;
+            text-align: center;
+            font-family: sans-serif;
+        }
+
+        .timer {
+            font-size: 80px;
+            margin-top: 50px;
+            color: #00ff00;
+        }
+
+        button {
+            padding: 15px 30px;
+            font-size: 20px;
+            cursor: pointer;
+            background: #444;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background: #666;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>♟️ Chess Study Timer</h1>
+    <div class="timer" id="display">00:00</div>
+    <br>
+    <button onclick="startTimer()">Start Session</button>
+    <button onclick="resetTimer()">Reset</button>
+
+    <script>
+        let seconds = 0;
+        let interval = null;
+
+        function startTimer() {
+            if (interval) return;
+            interval = setInterval(() => {
+                seconds++;
+                let mins = Math.floor(seconds / 60);
+                let secs = seconds % 60;
+                document.getElementById('display').innerText =
+                    `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+            }, 1000);
+        }
+
+        function resetTimer() {
+            clearInterval(interval);
+            interval = null;
+            seconds = 0;
+            document.getElementById('display').innerText = "00:00";
+        }
+    </script>
+</body>
+
+</html>
