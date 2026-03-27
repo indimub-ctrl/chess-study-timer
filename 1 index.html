@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>MAT102 Solver</title>
+    <style>
+        body {
+            background: #0d1117;
+            color: #c9d1d9;
+            font-family: sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .box {
+            background: #161b22;
+            border: 1px solid #30363d;
+            padding: 20px;
+            border-radius: 10px;
+            display: inline-block;
+        }
+
+        input {
+            background: #0d1117;
+            border: 1px solid #30363d;
+            color: white;
+            padding: 5px;
+            width: 50px;
+            margin: 5px;
+        }
+
+        button {
+            background: #238636;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>MAT102 Solver</h1>
+    <div class="box">
+        P1: <input id="x1" value="0" , <input id="y1" value="0"><br>
+        P2: <input id="x2" value="4" , <input id="y2" value="2"><br>
+        <button onclick="solve()">Calculate Properties</button>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        function solve() {
+            let x1 = parseFloat(document.getElementById('x1').value);
+            let y1 = parseFloat(document.getElementById('y1').value);
+            let x2 = parseFloat(document.getElementById('x2').value);
+            let y2 = parseFloat(document.getElementById('y2').value);
+
+            let d = Math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2);
+            let mx = (x1 + x2) / 2;
+            let my = (y1 + y2) / 2;
+            let m = ((y2 - y1) / (x2 - x1)).toFixed(2);
+
+            document.getElementById('result').innerHTML =
+                `Distance: <b>${d}</b><br>Midpoint: <b>(${mx}, ${my})</b><br>Slope: <b>${m}</b>`;
+        }
+    </script>
+</body>
+
+</html>
